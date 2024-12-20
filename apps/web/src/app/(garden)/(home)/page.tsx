@@ -1,9 +1,18 @@
 import { Button } from "@repo/ui/button";
+import { Metadata } from "next";
+import { getPosts } from "../../../utils/posts";
+import { Posts } from "../../../components/posts";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Digital Garden",
+};
+
+export default async function Home() {
+  const posts = await getPosts();
+
   return (
-    <div className="flex content-center justify-center">
-      <Button appName="web">Open alert</Button>
-    </div>
+    <main>
+      <Posts posts={posts} />
+    </main>
   );
 }
