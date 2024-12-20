@@ -11,7 +11,7 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <main>
+    <main className="mt-12">
       <Posts posts={posts} />
     </main>
   );

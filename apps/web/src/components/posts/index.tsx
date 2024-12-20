@@ -7,18 +7,27 @@ interface PostsProps {
 
 export function Posts({ posts }: PostsProps) {
   return (
-    <ol>
-      {posts.map(({ slug, title, publishedDate }) => (
-        <li key={slug}>
-          <h2>
+    <ul>
+      {posts.map(({ slug, title, publishedDate, categories }) => (
+        <li className="[&:not(:first-child)]:mt-5  " key={slug}>
+          <div className="flex justify-between">
             <Link href={`/${slug}`}>{title}</Link>
-          </h2>
-          <p>
-            <strong>{publishedDate}</strong>
-            {new Date(publishedDate).toLocaleDateString()}
-          </p>
+            <span>
+              <time>{new Date(publishedDate).toLocaleDateString()}</time>
+            </span>
+          </div>
+          <div className="flex flex-row gap-2 mt-2">
+            {categories?.map((category) => (
+              <div
+                className="border border-slate-300 rounded-full px-2"
+                key={category}
+              >
+                #{category}
+              </div>
+            ))}
+          </div>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }
