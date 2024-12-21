@@ -12,6 +12,7 @@ type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 const permanent_marker = Permanent_Marker({
   style: ["normal"],
   weight: ["400"],
+  variable: "--font-permanent-marker",
 });
 
 const customComponents = {
